@@ -1,0 +1,41 @@
+{% extends "base.html" %} {% block main %}
+
+<script>
+function load() {
+    var nodes = document.querySelectorAll('div.broadway');
+    for (var i = 0; i < nodes.length; i++) {
+    var broadway = new Broadway(nodes[i]);
+    // broadway.play();
+    }
+}
+window.onload=load;
+
+    // var player = new Player({size: {width: 640,height: 320}});
+    // document.body.appendChild(player.canvas);
+    // var strhost = "ws://" + window.location.host + "/h264";
+    // // Setup the WebSocket connection and start the player
+    // var client = new WebSocket(strhost);
+    // client.binaryType = 'arraybuffer';
+    // client.onopen    = function(evt) { onOpen(evt)   }; 
+    // client.onclose   = function(evt) { onClose(evt)  }; 
+    // client.onmessage = function(evt) { onMessage(evt)}; 
+    // client.onerror   = function(evt) { onError(evt)  }; 	
+    // function onOpen(evt)  {  console.log("open"); }  
+    // function onClose(evt) {  console.log("close");}  
+    // function onMessage(evt){ var messageData = new Uint8Array(evt.data); 
+    //     console.log(evt.data);      
+    //     player.decode(messageData);}  
+    // function onError(evt) { console.log("error");}  
+</script>
+<!--  <canvas id='canvas' width="640" height="100" style="background-color: #333333;"></canvas>  -->
+<div class="container">
+    <br/>
+    <a style="font-size: 24px; padding: 20px">H.264 Decoding in JavaScript</a>
+    <br/>
+    <a>Main Thread Decoding</a>
+    <br/>
+    <div class="broadway" src="/static/Broadway/Player/mozilla_story.mp4" width="640" height="320" style="position: relative;" workers="false" render="true" webgl="auto">
+    </div>       
+</div>
+
+{% endblock %}

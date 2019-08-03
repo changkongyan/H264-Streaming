@@ -1,0 +1,36 @@
+<!DOCTYPE html> 
+<html> 
+  <body> 
+    <div style="text-align:center;">
+        <form action="/example/html/form_action.asp" method="get">
+          <p>First name: <input type="file" name="fname" /></p>
+          <video src="/home/pikaqiu/Videos/14.mp4" controls="controls"></video>
+        </form>
+    </div> 
+  </body> 
+  <script type="text/javascript">
+    let iptFileEl = document.querySelector('input[type="file"]');
+    let videoEl = document.querySelector('video');
+
+    iptFileEl.onchange = e =>{
+      let file = iptFileEl.files && iptFileEl.files[0];
+      playFile(file);
+    };
+
+    function playFile(file){
+      if(file){
+        let fileReader = new FileReader();
+        fileReader.onload = evt => {
+          if(FileReader.DONE == fileReader.readyState){
+            videoEl.src = fileReader.result;
+          }else{
+            console.log('FileReader Error:', evt);
+          }
+        }
+        fileReader.readAsDataURL(file);
+      }else{
+        videoEl.src = '';
+      }
+    }
+  </script> 
+</html>
